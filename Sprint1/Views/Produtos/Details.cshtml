@@ -1,0 +1,58 @@
+﻿@model Sprint1.Models.Produto
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+
+<div>
+    <h1 class="display-4">@Model.Titulo</h1>
+    <hr />
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <img src="@Model.Imagem_url" class="img-fluid rounded shadow-sm" alt="Capa do @Model.Titulo">
+        </div>
+
+        <div class="col-md-8">
+            <h3>Descrição</h3>
+            <p class="lead">@Model.Descricao</p>
+
+            <div class="mt-4 mb-4">
+                @if (Model.Preco_descontado.HasValue && Model.Preco_descontado < Model.Preco_original)
+                {
+                    <h4 class="text-muted" style="text-decoration: line-through;">
+                        @Model.Preco_original.ToString("C")
+                    </h4>
+                    <h2 class="text-success">
+                        @Model.Preco_descontado.Value.ToString("C")
+                    </h2>
+                }
+                else
+                {
+                    <h2 class="text-primary">
+                        @Model.Preco_original.ToString("C")
+                    </h2>
+                }
+            </div>
+
+            <hr />
+
+            <h4>Especificações</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Estoque:</strong> @Model.Estoque unidades</li>
+                <li class="list-group-item"><strong>Categoria:</strong> @Model.Categoria</li>
+                <li class="list-group-item"><strong>Condição:</strong> @Model.Condicao_produto</li>
+                <li class="list-group-item"><strong>Idioma:</strong> @Model.Idioma</li>
+                @if (!string.IsNullOrEmpty(Model.Dimensoes))
+                {
+                    <li class="list-group-item"><strong>Dimensões:</strong> @Model.Dimensoes</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a asp-action="Edit" asp-route-id="@Model.Produto_ID" class="btn btn-primary">Editar Produto</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+    </div>
+</div>

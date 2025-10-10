@@ -1,0 +1,90 @@
+﻿@model Sprint1.Models.Produto
+
+@{
+    ViewData["Title"] = "Editar Produto";
+}
+
+<h1>Editar: @Model.Titulo</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Produto_ID" />
+
+            <div class="mb-3">
+                <label class="control-label">Imagem Atual</label>
+                <br />
+                <img src="@Model.Imagem_url" alt="Capa do @Model.Titulo" style="max-width: 150px; border-radius: 5px;" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Imagem_url" class="control-label">URL da Nova Imagem</label>
+                <input asp-for="Imagem_url" class="form-control" />
+                <span asp-validation-for="Imagem_url" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Preco_original" class="control-label"></label>
+                        <input asp-for="Preco_original" class="form-control" />
+                        <span asp-validation-for="Preco_original" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Estoque" class="control-label"></label>
+                        <input asp-for="Estoque" class="form-control" type="number" />
+                        <span asp-validation-for="Estoque" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Condicao_produto" class="control-label">Condição</label>
+                        <select asp-for="Condicao_produto" class="form-control">
+                            <option value="Novo">Novo</option>
+                            <option value="Usado">Usado</option>
+                            <option value="Edição de Colecionador">Edição de Colecionador</option>
+                        </select>
+                        <span asp-validation-for="Condicao_produto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Categoria" class="control-label"></label>
+                        <input asp-for="Categoria" class="form-control" />
+                        <span asp-validation-for="Categoria" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Salvar Alterações" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
