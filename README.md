@@ -7,7 +7,6 @@ Este repositório contém o **MVP (Produto Mínimo Viável)** de um painel admin
 
 O foco desta aplicação é fornecer uma interface web completa para o **Gerenciamento de Produtos (CRUD)**, permitindo que um administrador controle o catálogo da loja de forma simples e eficiente. Para fins de prototipagem e demonstração, a aplicação utiliza um **banco de dados simulado em memória**.
 
-> **Dica:** Grave um GIF da sua tela usando um programa como o [ScreenToGif](https://www.screentogif.com/) para mostrar seu painel funcionando! Depois, suba no [Imgur](https://imgur.com/) e cole o link aqui.
 
 ----------
 
