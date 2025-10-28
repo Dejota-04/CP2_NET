@@ -1,4 +1,4 @@
-namespace Sprint1.Models
+namespace CP2.Models
 {
     public class ErrorViewModel
     {

@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sprint1.Models;
+using CP2.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sprint1.Controllers
+namespace CP2.Controllers
 {
     public class ProdutosController : Controller
     {
         public static List<Produto> Produtos { get; set; } = new List<Produto>
         {
-            new Produto { Produto_ID = 1, Titulo = "Naruto Clássico Vol. 1", Descricao = "A jornada de um jovem ninja.", Preco_original = 29.90m, Estoque = 10, Categoria = "Shounen", Idioma = "Português", Condicao_produto = "Novo", Peso = 0.2m },
-            new Produto { Produto_ID = 2, Titulo = "One Piece Vol. 1", Descricao = "Monkey D. Luffy busca o maior tesouro.", Preco_original = 32.50m, Estoque = 5, Categoria = "Shounen", Idioma = "Português", Condicao_produto = "Novo", Peso = 0.22m },
-            new Produto { Produto_ID = 3, Titulo = "Attack on Titan Vol. 34", Descricao = "O final da épica batalha.", Preco_original = 34.90m, Estoque = 15, Categoria = "Seinen", Idioma = "Português", Condicao_produto = "Novo", Peso = 0.25m }
+            new Produto { Produto_ID = 1, Titulo = "Sonic Riders", Descricao = "Jogo de corrida do sonic em skates voadores!", Estoque = 10, Categoria = "Corrida", Idioma = "Inglês" },
+            new Produto { Produto_ID = 2, Titulo = "Hades", Descricao = "Fuja de tártaros como filho do demonio: HADES.", Estoque = 5, Categoria = "Roguelike", Idioma = "Português" },
+            new Produto { Produto_ID = 3, Titulo = "Silksong", Descricao = "Embarque nessa nova aventura como Hornet", Estoque = 15, Categoria = "Metroidvania", Idioma = "Português" }
         };
 
         public IActionResult Index()
