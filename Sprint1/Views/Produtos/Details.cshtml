@@ -39,13 +39,12 @@
 
             <h4>Especificações</h4>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Estoque:</strong> @Model.Estoque unidades</li>
-                <li class="list-group-item"><strong>Categoria:</strong> @Model.Categoria</li>
-                <li class="list-group-item"><strong>Condição:</strong> @Model.Condicao_produto</li>
-                <li class="list-group-item"><strong>Idioma:</strong> @Model.Idioma</li>
-                @if (!string.IsNullOrEmpty(Model.Dimensoes))
+                <li class="list-group-item"><strong>@Html.DisplayNameFor(model => model.Categoria):</strong> @Model.Categoria</li>
+                <li class="list-group-item"><strong>@Html.DisplayNameFor(model => model.Plataforma):</strong> @Model.Plataforma</li>
+
+                @if (!string.IsNullOrEmpty(Model.Desenvolvedora))
                 {
-                    <li class="list-group-item"><strong>Dimensões:</strong> @Model.Dimensoes</li>
+                    <li class="list-group-item"><strong>@Html.DisplayNameFor(model => model.Desenvolvedora):</strong> @Model.Desenvolvedora</li>
                 }
             </ul>
         </div>

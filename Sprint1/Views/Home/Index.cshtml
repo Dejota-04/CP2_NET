@@ -16,7 +16,16 @@
     {
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="@produto.Imagem_url" class="card-img-top" alt="@produto.Titulo" style="height: 400px; object-fit: cover;">
+
+                @if (!string.IsNullOrEmpty(produto.Imagem_url))
+                {
+                    <img src="@produto.Imagem_url" class="card-img-top" alt="@produto.Titulo" style="height: 400px; object-fit: cover;">
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/600x800.png?text=Sem+Capa" class="card-img-top" alt="Sem Capa" style="height: 400px; object-fit: cover;">
+                }
+
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">@produto.Titulo</h5>
                     <p class="card-text">@produto.Descricao</p>
@@ -26,7 +35,7 @@
                         <a asp-controller="Produtos" asp-action="Details" asp-route-id="@produto.Produto_ID" class="btn btn-primary btn-sm">Detalhes</a>
                         <a asp-controller="Produtos" asp-action="Edit" asp-route-id="@produto.Produto_ID" class="btn btn-secondary btn-sm">Editar</a>
 
-                        <form asp-action="Delete" asp-route-id="@produto.Produto_ID" method="post" class="d-inline">
+                        <form asp-controller="Produtos" asp-action="Delete" asp-route-id="@produto.Produto_ID" method="post" class="d-inline">
                             <button type="submit" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Tem certeza que deseja excluir o produto \'@produto.Titulo\'?');">
                                 Excluir

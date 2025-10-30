@@ -29,11 +29,24 @@
                             <a class="nav-link" asp-controller="Produtos" asp-action="Index">Gerenciar Produtos</a>
                         </li>
                     </ul>
+                    <form class="d-flex" asp-controller="Produtos" asp-action="Index" method="get">
+                        <input class="form-control me-2" type="search" name="termoBusca" placeholder="Buscar Produto..." aria-label="Buscar" value="@ViewData["termoBuscaAtual"]">
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </form>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <strong>Sucesso!</strong> @TempData["MensagemSucesso"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

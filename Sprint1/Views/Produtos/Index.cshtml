@@ -19,9 +19,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Preco_original)
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.Estoque)
+                @Html.DisplayNameFor(model => model.Plataforma)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
@@ -40,17 +42,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Preco_original)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Estoque)
+                    @Html.DisplayFor(modelItem => item.Plataforma)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Categoria)
+                    <genre-tag>@item.Categoria</genre-tag>
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Produto_ID" class="btn btn-secondary btn-sm">Editar</a>
                     <a asp-action="Details" asp-route-id="@item.Produto_ID" class="btn btn-info btn-sm">Detalhes</a>
 
-                    <form asp-action="Delete" asp-route-id="@item.Produto_ID" method="post" class="d-inline">
+                    <form asp-controller="Produtos" asp-action="Delete" asp-route-id="@item.Produto_ID" method="post" class="d-inline">
                         <button type="submit" class="btn btn-danger btn-sm"
                                 onclick="return confirm('Tem certeza que deseja excluir o produto \'@item.Titulo\'?');">
                             Excluir

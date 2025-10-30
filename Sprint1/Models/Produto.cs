@@ -27,22 +27,20 @@ namespace CP2.Models
         [Display(Name = "Preço com Desconto")]
         public decimal? Preco_descontado { get; set; }
 
-        [Required(ErrorMessage = "O campo Estoque é obrigatório.")]
         [Range(0, int.MaxValue, ErrorMessage = "O estoque não pode ser negativo.")]
-        public int Estoque { get; set; }
+        public int? Estoque { get; set; }
 
         [Column(TypeName = "decimal(10, 2)")]
-        public decimal? Peso { get; set; } 
+        public decimal? Peso { get; set; }
 
-        public string? Dimensoes { get; set; } 
+        public string? Dimensoes { get; set; }
 
-        [Required(ErrorMessage = "O campo Condição é obrigatório.")]
         [Display(Name = "Condição")]
-        public string Condicao_produto { get; set; }
+        public string? Condicao_produto { get; set; }
 
         [Required(ErrorMessage = "O campo Gênero é obrigatório.")]
-        [Display(Name = "Gênero")] 
-        public string Categoria { get; set; } 
+        [Display(Name = "Gênero")]
+        public string Categoria { get; set; }
 
         public string? Idioma { get; set; }
 
@@ -52,7 +50,7 @@ namespace CP2.Models
 
         [Required(ErrorMessage = "O campo Plataforma é obrigatório.")]
         [Display(Name = "Plataforma")]
-        public string Plataforma { get; set; } 
+        public string Plataforma { get; set; }
 
         [Display(Name = "Desenvolvedora")]
         public string? Desenvolvedora { get; set; }
@@ -64,7 +62,7 @@ namespace CP2.Models
         [Display(Name = "Data de Lançamento")]
         public DateTime? DataLancamento { get; set; }
 
-        [Display(Name = "Classificação Indicativa")] 
+        [Display(Name = "Classificação Indicativa")]
         public string? ClassificacaoIndicativa { get; set; }
     }
 }
