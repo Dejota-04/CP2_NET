@@ -1,118 +1,133 @@
+# 🎮 Projeto CP2 - E-Commerce de Games (ASP.NET Core MVC)
 
-# 🏴‍☠️ Rei dos Piratas - Painel Administrativo (MVP Sprint)
+Este é um projeto desenvolvido para a disciplina [Nome da Disciplina - .NET] da FIAP (Turma 2TDSPS).
 
-## Sobre esta Aplicação
+Trata-se de uma aplicação Web **ASP.NET Core MVC** que simula um E-Commerce de Games. A aplicação implementa todas as operações básicas de **CRUD (Create, Read, Update, Delete)** para o gerenciamento de produtos, além de funcionalidades extras solicitadas.
 
-Este repositório contém o **MVP (Produto Mínimo Viável)** de um painel administrativo para o e-commerce de mangás "Rei dos Piratas". A aplicação foi desenvolvida em **ASP.NET Core MVC** como parte da "Challenge Sprint" da faculdade pelo grupo CATECH.
+O projeto **não utiliza um banco de dados**, persistindo os dados em uma **lista estática** (`static List<Produto>`) no `ProdutosController`, conforme os requisitos da entrega.
 
-O foco desta aplicação é fornecer uma interface web completa para o **Gerenciamento de Produtos (CRUD)**, permitindo que um administrador controle o catálogo da loja de forma simples e eficiente. Para fins de prototipagem e demonstração, a aplicação utiliza um **banco de dados simulado em memória**.
+## 👨‍💻 Integrantes do Grupo
 
+-   **RM559613** – Gabriel Cruz Ferreira
+    
+-   **RM561144** – Jonas de Jesus Campos de Oliveira
+    
+-   **RM559336** – Wendell Nascimento Dourado
+    
+-   **RM560992** – Kauã Ferreira dos Santos
+    
+-   **RM560227** – Vinicius Da Silva Bitú
+    
+-   **RM559622** – Daniel Santana Correa Batista
+    
 
-----------
+## 💻 Tecnologias Utilizadas
+
+-   **ASP.NET Core MVC** (.NET 8)
+    
+-   **C#**
+    
+-   **HTML5** e **CSS3**
+    
+-   **Bootstrap 5** (com o tema Bootswatch "Brite")
+    
+-   **Tag Helpers** (nativos do Razor e customizados)
+    
 
 ## ✨ Funcionalidades Implementadas
 
--   **Gerenciamento Completo de Produtos (CRUD):**
-    
-    -   **`Create`:** Formulário otimizado para cadastrar novos mangás, com campos essenciais e layout organizado.
-        
-    -   **`Read`:**
-        
-        -   **Página Inicial:** Dashboard visual com cards de produtos.
-            
-        -   **Página de Gerenciamento:** Tabela de produtos com as informações principais e acesso rápido às ações.
-            
-        -   **Página de Detalhes:** Visualização completa e estilizada de um único produto, com imagem em destaque.
-            
-    -   **`Update`:** Formulário de edição com pré-visualização da imagem atual e campos relevantes.
-        
-    -   **`Delete`:** Função de exclusão segura, com uma janela de confirmação em JavaScript (`confirm`) que evita uma página de confirmação separada, melhorando a experiência do usuário.
-        
--   **Validação de Formulários (pt-BR):**
-    
-    -   Mensagens de erro customizadas e traduzidas para o português.
-        
-    -   Configuração de globalização para aceitar o formato de números brasileiro (ex: `29,90`), corrigindo erros de validação do lado do cliente e do servidor.
-        
--   **Interface Administrativa Responsiva:**
-    
-    -   Layout que se adapta a diferentes tamanhos de tela (desktop, tablet, mobile) utilizando Bootstrap 5.
-        
-    -   Tema customizado do [Bootswatch](https://bootswatch.com/) para um visual único.
-        
+O projeto cumpre todos os requisitos obrigatórios solicitados:
 
-----------
-
-## 🛠️ Tecnologias Utilizadas
-
--   **Backend:** ASP.NET Core 8 MVC, C# 11
+-   ✅ **CRUD Completo:** Sistema permite Criar, Ler (Listar), Atualizar e Excluir produtos.
     
--   **Frontend:** HTML5, CSS3, JavaScript
+-   ✅ **Pesquisa Global:** Implementação de uma barra de busca no cabeçalho (`_Layout.cshtml`) que filtra os produtos por Título na página de gerenciamento (`Produtos/Index`).
     
--   **Framework CSS:** Bootstrap 5
+-   ✅ **Dados de Múltiplos Tipos:** Uso de dropdowns (`<select>`) para os campos "Gênero" e "Plataforma" nos formulários de Create/Edit. As opções são populadas via `ViewBag` diretamente do `ProdutosController`.
     
--   **Bibliotecas JS:** jQuery & jQuery Validate
+-   ✅ **Criação de Tag Helper:** Criação do Tag Helper customizado `<genre-tag>` (localizado em `TagHelpers/GenreTagHelper.cs`) para estilizar a exibição do gênero do jogo na tabela de gerenciamento.
     
--   **Banco de Dados (Simulado):** Coleção estática em memória (`static List<Produto>`) para simular a persistência de dados durante a execução da aplicação.
+-   ✅ **Confirmação de Remoção:** Utilização de `onclick="return confirm()"` em JavaScript para criar um alerta de confirmação antes de excluir um item.
     
--   **Ambiente de Desenvolvimento:** Visual Studio
+-   ✅ **Notificações de Sucesso:** Uso de `TempData` para exibir um alerta de sucesso (toast) no topo da página após as operações de Create, Edit e Delete.
+    
+-   ✅ **Layout Responsivo:** Utilização de Bootstrap 5 para um layout limpo e funcional.
+    
+-   ✅ **Persistência em Memória:** Uso de `static List<Produto>` no `ProdutosController` como "banco de dados" fake, conforme solicitado.
     
 
-----------
+## 📸 Telas da Aplicação
 
-## 🚀 Como Executar a Aplicação
+Abaixo estão as principais telas do sistema e suas funcionalidades.
 
-A configuração é extremamente simples, pois não há dependência de um banco de dados externo.
+### 1. Home (Vitrine de Produtos)
 
-1.  Clone este repositório para sua máquina local.
+-   **Arquivos:** `Views/Home/Index.cshtml` e `Controllers/HomeController.cs`
     
-2.  Abra o arquivo da solução (`.sln`) com o Visual Studio 2022 ou superior.
+-   **Descrição:** Página inicial que exibe os produtos cadastrados em formato de cards. Esta página lê os dados da lista estática do `ProdutosController` para se manter sempre atualizada, mesmo após edições ou criações. A barra de busca global fica no header.
     
-3.  Pressione **F5** ou clique no botão ▶️ para iniciar o projeto em modo de depuração.
-    
-4.  Pronto! A aplicação estará rodando em `localhost`. Navegue pelos links no menu para testar todas as funcionalidades.
-    
+<img width="1915" height="908" alt="image" src="https://github.com/user-attachments/assets/0379f4c6-9775-4f45-af99-03721bdb13c2" />
 
-----------
 
-## 📂 Estrutura do Projeto
+### 2. Gerenciar Produtos (Read/List)
 
-O código está organizado seguindo a arquitetura padrão **Model-View-Controller (MVC)**:
-
--   **`/Models`**: Contém a classe `Produto.cs`, que define a estrutura dos dados.
+-   **Arquivos:** `Views/Produtos/Index.cshtml` e `Controllers/ProdutosController.cs`
     
--   **`/Views`**: Contém os arquivos `.cshtml` da interface do usuário, incluindo as telas de `Create`, `Edit`, `Details`, `Index` e o `_Layout` principal.
-    
--   **`/Controllers`**: Contém o `ProdutosController.cs`, que gerencia toda a lógica de negócio do CRUD, e o `HomeController.cs` para a página inicial.
-    
--   **`/wwwroot`**: Contém os arquivos estáticos (CSS, JS, imagens).
-    
--   **`Program.cs`**: Arquivo de inicialização que configura os serviços, o pipeline de requisições e a globalização para `pt-BR`.
+-   **Descrição:** Exibe todos os produtos em uma tabela. Esta é a página principal do CRUD. Ela recebe o resultado da **Pesquisa** (que filtra por Título) e utiliza o Tag Helper customizado `<genre-tag>` para exibir o gênero como uma _badge_ colorida.
     
 
-----------
+<img width="1913" height="905" alt="image" src="https://github.com/user-attachments/assets/2aa34fca-e4fa-4218-903a-9f0269a53e19" />
 
-## 💡 Próximos Passos & Evolução
+<img width="1740" height="438" alt="image" src="https://github.com/user-attachments/assets/5e98a610-be8d-4bd4-9ff8-94440045e81c" />
 
-Este MVP é a fundação do painel administrativo. Os próximos passos para evoluir esta aplicação seriam:
 
--   [ ] **Implementar Persistência de Dados Real:** Substituir a `static List` por um banco de dados (SQLite para simplicidade ou Oracle, como no escopo geral do projeto) utilizando o **Entity Framework Core**.
+### 3. Adicionar Produto (Create)
+
+-   **Arquivos:** `Views/Produtos/Create.cshtml` e `Controllers/ProdutosController.cs`
     
--   [ ] **Sistema de Upload de Imagens:** Trocar o campo de URL por uma funcionalidade de upload de arquivos do computador do administrador.
-    
--   [ ] **Autenticação e Autorização:** Adicionar uma tela de login para proteger o acesso ao painel.
-    
--   [ ] **Expandir o Domínio:** Adicionar novas entidades e seus respectivos CRUDs (ex: `Clientes`, `Pedidos`, `Categorias`).
-    
--   [ ] **Criar uma API:** Expor os dados dos produtos através de uma API .NET para ser consumida pelo frontend da loja.
+-   **Descrição:** Formulário para cadastro de novos jogos. Os campos "Gênero" e "Plataforma" são dropdowns (`<select>`) populados via `ViewBag` pelo `ProdutosController`, atendendo ao requisito de dados controlados.
     
 
-----------
+<img width="1839" height="893" alt="image" src="https://github.com/user-attachments/assets/cccbac9a-c0e3-4743-bee5-0ae2a1e12648" />
 
-## 👨‍💻 Integrantes do Grupo CATECH
 
--   **Daniel Santana Corrêa Batista** [RM559622]
+### 4. Editar Produto (Update)
+
+-   **Arquivos:** `Views/Produtos/Edit.cshtml` e `Controllers/ProdutosController.cs`
     
--   **Wendell Nascimento Dourado** [RA559336]
+-   **Descrição:** Formulário pré-preenchido que permite a alteração dos dados de um produto existente. As validações foram ajustadas no `Models/Produto.cs` para permitir que campos não-visíveis (como `Estoque`) não sejam obrigatórios, possibilitando a edição.
     
--   **Jonas de Jesus Campos de Oliveira** [RM561144]
+
+[INSERIR PRINT DA TELA DE EDITAR PRODUTO AQUI]
+
+### 5. Detalhes do Produto (Details)
+
+-   **Arquivo:** `Views/Produtos/Details.cshtml`
+    
+-   **Descrição:** Página de "Read" individual que exibe todas as informações de um produto específico de forma mais organizada.
+    
+
+<img width="1583" height="708" alt="image" src="https://github.com/user-attachments/assets/7962f5c8-7919-4da9-a36f-1bafa62fbe59" />
+
+
+### 6. Notificação de Sucesso (TempData)
+
+-   **Arquivo:** `Views/Shared/_Layout.cshtml`
+    
+-   **Descrição:** Após o usuário criar, editar ou excluir um produto com sucesso, ele é redirecionado para a Index e uma mensagem de sucesso é exibida no topo da página. Isso é feito salvando a mensagem no `TempData` no Controller e lendo-a no `_Layout.cshtml`.
+    
+
+<img width="1350" height="919" alt="image" src="https://github.com/user-attachments/assets/8af8e525-c89c-4edf-bb47-67279ede5142" />
+
+<img width="1336" height="549" alt="image" src="https://github.com/user-attachments/assets/28de8320-03ba-4f93-a97a-3394ed317a5e" />
+
+
+
+## 🚀 Como Executar o Projeto
+
+1.  Clone este repositório.
+    
+2.  Abra o arquivo `CP2_NET.sln` no Visual Studio 2022.
+    
+3.  Para testar as funcionalidades de Create, Edit e Delete sem perder os dados (devido ao Hot Reload reiniciar a lista estática), inicie a aplicação com **`Ctrl + F5`** (Iniciar Sem Depuração).
+    
+4.  Para rodar em modo de desenvolvimento padrão, apenas pressione **`F5`**.
